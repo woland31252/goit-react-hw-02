@@ -14,42 +14,21 @@ const [obj, setObj] = useState(
     bad: 0
     });
   
-  // const feedbackUpdate = feedbackType => {
-  //   const name = obj.feedbackType
-  //   setObj({
-  //   ...obj,
-  //   name: obj.name + 1,
-  // });
-  // }
-
-
-const handleOnClickGood = () => {
-  setObj({
+  const feedbackUpdate = feedbackType => {
+    setObj({
     ...obj,
-    good: obj.good + 1,
+    [feedbackType]: obj[feedbackType] + 1,
   });
-}
-  
-const handleOnClickNeutral = () => {
-  setObj({
-    ...obj,
-    neutral: obj.neutral + 1,
-  });
-}
-
-const handleOnClickBad = () => {
-  setObj({
-    ...obj,
-    bad: obj.bad + 1,
-  });
-}
+  }
+  const totalFeedback = obj.good + obj.neutral + obj.bad;
+  const goodPercent = Math.round((obj.good / totalFeedback) * 100)
 
 
     return (
     <div className={css.container}>
       <Description />
-      <Options clickGood={handleOnClickGood} clickNuetral={handleOnClickNeutral} clickBad={handleOnClickBad}/>
-      <Feedback good={obj.good} neutral={obj.neutral} bad={ obj.bad} />
+      <Options click={feedbackUpdate} total={totalFeedback}/>
+      <Feedback value={obj} total={totalFeedback} round={goodPercent} />
     </div>
   )
 }
