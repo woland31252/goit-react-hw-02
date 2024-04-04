@@ -8,7 +8,7 @@ export default function Feedback({ value, total, round}) {
                 <li>Neutral: { value.neutral}</li>
                 <li>Bad: { value.bad}</li>
                 <li>Total: { total}</li>
-                <li>Positive: {NaN?0: round} %</li>
+                <li>Positive: {round} %</li>
             </ul>
         </div>
     )
