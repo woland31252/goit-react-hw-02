@@ -1,6 +1,8 @@
+
 import css from '../Options/Options.module.css'
 
 export default function Options({ click, total, reset }) {
+    
     return (
         <div className={css.buttonList}>
             <button className={css.btn} onClick={() => {click('good')}}>Good</button>
